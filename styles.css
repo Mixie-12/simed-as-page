@@ -759,6 +759,7 @@ textarea{ resize: vertical; min-height: 120px; }
 .team-grid{
   margin-top: 26px;
   display: grid;
+  grid-template-columns: 1fr;
   gap: 20px;
 }
 
