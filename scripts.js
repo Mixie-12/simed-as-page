@@ -110,9 +110,11 @@
     });
 
     // Hide cursor dot when mouse leaves window
-    document.addEventListener('mouseleave', () => {
-      cursorDot.classList.remove('active');
-      isMoving = false;
+    window.addEventListener('mouseout', (e) => {
+      if (!e.relatedTarget && !e.toElement) {
+        cursorDot.classList.remove('active');
+        isMoving = false;
+      }
     });
 
     // Animate cursor dot with smooth following
@@ -152,5 +154,11 @@
       });
     });
   };
-  addStaggerAnimation();
+
+  // Run after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addStaggerAnimation);
+  } else {
+    addStaggerAnimation();
+  }
 })();
