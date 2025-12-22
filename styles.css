@@ -767,22 +767,29 @@ textarea{ resize: vertical; min-height: 120px; }
 .team-grid{
   margin-top: 26px;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
 }
 
 @media (max-width: 980px){
+  .team-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px){
   .team-grid{ grid-template-columns: 1fr; }
 }
 
 .team-member{
   display: flex;
-  align-items: flex-start;
-  gap: 18px;
-  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  padding: 24px 20px;
   border-radius: var(--radius2);
   border: 1px solid rgba(255,255,255,.10);
   background: rgba(255,255,255,.03);
+  transition: all .3s ease;
 }
 
 .team-member__avatar{
@@ -808,6 +815,10 @@ textarea{ resize: vertical; min-height: 120px; }
 .team-member__info{
   flex: 1;
   min-width: 0; /* fixes text overflow in flex */
+}
+
+.team-member__info h3{
+  margin: 0 0 6px;
 }
 
 
