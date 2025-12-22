@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1220" />
+  <meta name="description" content="Simed AS – Investeringsprosess" />
+  <title>Investeringsprosess – Simed AS</title>
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Hopp til innhold</a>
+
+  <header class="header" data-elevate>
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="Simed AS">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M4 14.5C7.5 9.5 10.25 8 14 8c3.75 0 6.5 1.5 6 6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M4 18.5c3.5-5 6.25-6.5 10-6.5 3.75 0 6.5 1.5 6 6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".75"/>
+          </svg>
+        </span>
+        <span class="brand__text">
+          <span class="brand__name">Simed AS</span>
+          <span class="brand__tag">Oslo, Norge</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Hovedmeny">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="navMenu">
+          <span class="sr-only">Åpne meny</span>
+          <span class="hamburger" aria-hidden="true"></span>
+        </button>
+
+        <div id="navMenu" class="nav__menu" data-collapsible>
+          <a href="om.html">Om</a>
+          <a href="team.html">Team</a>
+          <a href="mandat.html">Mandat</a>
+          <a href="prosess.html" class="active">Prosess</a>
+          <a href="risiko.html">Risikostyring</a>
+          <a href="baerekraft.html">Bærekraft</a>
+          <a class="btn btn--small" href="kontakt.html">Kontakt</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero__content reveal">
+          <h1>Investeringsprosess</h1>
+          <p class="lead">
+            Investeringsbeslutninger bygger på en helhetlig vurdering som kombinerer flere analytiske tilnærminger
+            og et langsiktig perspektiv.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="timeline">
+          <div class="step reveal">
+            <div class="step__num">01</div>
+            <div class="step__body">
+              <h3>Fundamental analyse</h3>
+              <p>Analyse av selskaper, sektorer og verdsettelse.</p>
+            </div>
+          </div>
+
+          <div class="step reveal" style="--d: 80ms">
+            <div class="step__num">02</div>
+            <div class="step__body">
+              <h3>Historikk og sykluser</h3>
+              <p>Analyse av historiske markedsmønstre og sykluser.</p>
+            </div>
+          </div>
+
+          <div class="step reveal" style="--d: 160ms">
+            <div class="step__num">03</div>
+            <div class="step__body">
+              <h3>Makro og sentralbank</h3>
+              <p>Vurdering av makroøkonomiske forhold og sentralbankpolitikk.</p>
+            </div>
+          </div>
+
+          <div class="step reveal" style="--d: 240ms">
+            <div class="step__num">04</div>
+            <div class="step__body">
+              <h3>Markedsdynamikk</h3>
+              <p>Observasjon av markedsdynamikk, posisjonering og investoratferd.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="muted reveal" style="--d: 300ms">
+          Prosessen er dynamisk, og vi oppdaterer løpende vurderinger når ny informasjon foreligger.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>Markedsforståelse</h2>
+          <p class="muted">
+            Vi legger til grunn at finansmarkeder påvirkes av både fundamentale forhold og menneskelig atferd.
+            Perioder med sterk optimisme kan innebære økt risiko, mens perioder med usikkerhet kan gi grunnlag for
+            attraktive langsiktige muligheter.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card reveal">
+            <h3>Hva det innebærer</h3>
+            <ul class="bullets">
+              <li>Løpende vurdering av risikonivå og markedsstemning</li>
+              <li>Fokus på robusthet fremfor presise prognoser</li>
+              <li>Tilpasning av eksponering etter endrede forutsetninger</li>
+            </ul>
+          </div>
+
+          <div class="card reveal" style="--d: 120ms">
+            <h3>Prinsipp</h3>
+            <p class="muted">
+              Vi søker ikke å forutsi kortsiktige bevegelser, men å forstå sannsynlige utviklingsbaner og risiko over tid.
+            </p>
+            <div class="quote">
+              <p>«Nøktern analyse, tydelige rammer og langsiktig perspektiv.»</p>
+              <span>— Simed AS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <div class="footer__brand">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 14.5C7.5 9.5 10.25 8 14 8c3.75 0 6.5 1.5 6 6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M4 18.5c3.5-5 6.25-6.5 10-6.5 3.75 0 6.5 1.5 6 6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".75"/>
+            </svg>
+          </span>
+          <span>
+            <div class="footer__title">Simed AS</div>
+            <div class="footer__sub">Langsiktig kapitalforvaltning</div>
+          </span>
+        </div>
+        <p class="muted small">
+          © <span id="year"></span> Simed AS. Alle rettigheter reservert.
+        </p>
+      </div>
+
+      <div class="footer__links">
+        <a href="om.html">Om</a>
+        <a href="team.html">Team</a>
+        <a href="mandat.html">Mandat</a>
+        <a href="prosess.html">Prosess</a>
+        <a href="risiko.html">Risikostyring</a>
+        <a href="baerekraft.html">Bærekraft</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" aria-label="Til toppen" data-to-top>
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

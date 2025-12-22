@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1220" />
+  <meta name="description" content="Simed AS – Bærekraft og ansvarlighet" />
+  <title>Bærekraft – Simed AS</title>
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Hopp til innhold</a>
+
+  <header class="header" data-elevate>
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="Simed AS">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M4 14.5C7.5 9.5 10.25 8 14 8c3.75 0 6.5 1.5 6 6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M4 18.5c3.5-5 6.25-6.5 10-6.5 3.75 0 6.5 1.5 6 6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".75"/>
+          </svg>
+        </span>
+        <span class="brand__text">
+          <span class="brand__name">Simed AS</span>
+          <span class="brand__tag">Oslo, Norge</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Hovedmeny">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="navMenu">
+          <span class="sr-only">Åpne meny</span>
+          <span class="hamburger" aria-hidden="true"></span>
+        </button>
+
+        <div id="navMenu" class="nav__menu" data-collapsible>
+          <a href="om.html">Om</a>
+          <a href="team.html">Team</a>
+          <a href="mandat.html">Mandat</a>
+          <a href="prosess.html">Prosess</a>
+          <a href="risiko.html">Risikostyring</a>
+          <a href="baerekraft.html" class="active">Bærekraft</a>
+          <a class="btn btn--small" href="kontakt.html">Kontakt</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero__content reveal">
+          <h1>Bærekraft og ansvarlighet</h1>
+          <p class="lead">
+            Vi er bevisst at investeringsbeslutninger kan ha langsiktige konsekvenser. Der det er relevant, kan vi
+            vurdere forhold knyttet til selskapsstyring og risikoer som kan påvirke langsiktig verdiskaping.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid-2">
+          <div class="card reveal">
+            <h3>Ansvarlighet</h3>
+            <p class="muted">
+              Vi søker å forstå helheten: governance, risiko, incentiver og langsiktige effekter – uten å miste fokus på
+              vårt mandat og våre risikorammer.
+            </p>
+            <div class="pill-row" role="list" aria-label="Fokusområder">
+              <span class="pill" role="listitem">Eierskap</span>
+              <span class="pill" role="listitem">Styring</span>
+              <span class="pill" role="listitem">Risikoforståelse</span>
+              <span class="pill" role="listitem">Langsiktig verdi</span>
+            </div>
+          </div>
+
+          <div class="card reveal" style="--d: 120ms">
+            <h3>Norske verdier</h3>
+            <p class="muted">
+              Tillit bygges over tid. Vi legger vekt på nøkternhet, kvalitet og tydelig kommunikasjon – med respekt for
+              ansvar, regler og forutsigbarhet.
+            </p>
+            <ul class="checklist checklist--compact">
+              <li>Transparens</li>
+              <li>Forutsigbarhet</li>
+              <li>Langsiktighet</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <div class="footer__brand">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 14.5C7.5 9.5 10.25 8 14 8c3.75 0 6.5 1.5 6 6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M4 18.5c3.5-5 6.25-6.5 10-6.5 3.75 0 6.5 1.5 6 6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".75"/>
+            </svg>
+          </span>
+          <span>
+            <div class="footer__title">Simed AS</div>
+            <div class="footer__sub">Langsiktig kapitalforvaltning</div>
+          </span>
+        </div>
+        <p class="muted small">
+          © <span id="year"></span> Simed AS. Alle rettigheter reservert.
+        </p>
+      </div>
+
+      <div class="footer__links">
+        <a href="om.html">Om</a>
+        <a href="team.html">Team</a>
+        <a href="mandat.html">Mandat</a>
+        <a href="prosess.html">Prosess</a>
+        <a href="risiko.html">Risikostyring</a>
+        <a href="baerekraft.html">Bærekraft</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" aria-label="Til toppen" data-to-top>
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
