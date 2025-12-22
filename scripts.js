@@ -106,12 +106,7 @@
         form.reset();
       } else {
         // Error from server
-        const data = await response.json();
-        if (data.errors) {
-          statusDiv.textContent = 'Det oppstod en feil. Vennligst prøv igjen.';
-        } else {
-          statusDiv.textContent = 'Det oppstod en feil. Vennligst prøv igjen.';
-        }
+        statusDiv.textContent = 'Det oppstod en feil. Vennligst prøv igjen.';
         statusDiv.style.display = 'block';
         statusDiv.style.color = '#ef4444'; // red
       }
