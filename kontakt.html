@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1220" />
+  <meta name="description" content="Simed AS – Kontakt oss" />
+  <title>Kontakt – Simed AS</title>
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Hopp til innhold</a>
+
+  <header class="header" data-elevate>
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="Simed AS">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M4 14.5C7.5 9.5 10.25 8 14 8c3.75 0 6.5 1.5 6 6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M4 18.5c3.5-5 6.25-6.5 10-6.5 3.75 0 6.5 1.5 6 6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".75"/>
+          </svg>
+        </span>
+        <span class="brand__text">
+          <span class="brand__name">Simed AS</span>
+          <span class="brand__tag">Oslo, Norge</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Hovedmeny">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="navMenu">
+          <span class="sr-only">Åpne meny</span>
+          <span class="hamburger" aria-hidden="true"></span>
+        </button>
+
+        <div id="navMenu" class="nav__menu" data-collapsible>
+          <a href="om.html">Om</a>
+          <a href="team.html">Team</a>
+          <a href="mandat.html">Mandat</a>
+          <a href="prosess.html">Prosess</a>
+          <a href="risiko.html">Risikostyring</a>
+          <a href="baerekraft.html">Bærekraft</a>
+          <a class="btn btn--small active" href="kontakt.html">Kontakt</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero__content reveal">
+          <h1>Kontakt</h1>
+          <p class="lead">
+            Ønsker du mer informasjon eller en uforpliktende samtale? Send oss en melding.
+            (Denne formen bruker <em>mailto</em> og åpner e‑postklienten din.)
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="contact">
+          <form class="form card reveal" id="contactForm" autocomplete="on">
+            <div class="form__row">
+              <label>
+                <span>Navn</span>
+                <input name="name" type="text" placeholder="Ditt navn" required />
+              </label>
+              <label>
+                <span>E‑post</span>
+                <input name="email" type="email" placeholder="navn@firma.no" required />
+              </label>
+            </div>
+
+            <label>
+              <span>Melding</span>
+              <textarea name="message" rows="5" placeholder="Hva kan vi hjelpe deg med?" required></textarea>
+            </label>
+
+            <div class="form__actions">
+              <button class="btn" type="submit">Send melding</button>
+              <p class="hint">Du kan også kontakte oss på <span class="mono">kontakt@simed.no</span> (endre til riktig e‑post).</p>
+            </div>
+          </form>
+
+          <aside class="card card--glass reveal" style="--d: 120ms">
+            <h3>Simed AS</h3>
+            <p class="muted">
+              Oslo, Norge<br />
+              Organisasjonsnummer: <span class="mono">[legg inn]</span><br />
+              E‑post: <span class="mono">kontakt@simed.no</span>
+            </p>
+
+            <div class="divider-mini" aria-hidden="true"></div>
+
+            <p class="muted">
+              <strong>Merk:</strong> Innholdet på denne nettsiden er generell informasjon og skal ikke forstås som
+              investeringsrådgivning.
+            </p>
+
+            <a class="inline" href="index.html">Til forsiden <span aria-hidden="true">→</span></a>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <div class="footer__brand">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 14.5C7.5 9.5 10.25 8 14 8c3.75 0 6.5 1.5 6 6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M4 18.5c3.5-5 6.25-6.5 10-6.5 3.75 0 6.5 1.5 6 6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".75"/>
+            </svg>
+          </span>
+          <span>
+            <div class="footer__title">Simed AS</div>
+            <div class="footer__sub">Langsiktig kapitalforvaltning</div>
+          </span>
+        </div>
+        <p class="muted small">
+          © <span id="year"></span> Simed AS. Alle rettigheter reservert.
+        </p>
+      </div>
+
+      <div class="footer__links">
+        <a href="om.html">Om</a>
+        <a href="team.html">Team</a>
+        <a href="mandat.html">Mandat</a>
+        <a href="prosess.html">Prosess</a>
+        <a href="risiko.html">Risikostyring</a>
+        <a href="baerekraft.html">Bærekraft</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" aria-label="Til toppen" data-to-top>
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

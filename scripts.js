@@ -90,4 +90,80 @@
 
     window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
   });
+
+  // Cursor follower dot
+  const cursorDot = qs('.cursor-dot');
+  if (cursorDot) {
+    let mouseX = 0, mouseY = 0;
+    let dotX = 0, dotY = 0;
+    let isMoving = false;
+    let animationId = null;
+
+    // Track mouse movement
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      
+      if (!isMoving) {
+        cursorDot.classList.add('active');
+        isMoving = true;
+        if (!animationId) {
+          animateCursor();
+        }
+      }
+    });
+
+    // Hide cursor dot when mouse leaves window
+    document.addEventListener('mouseleave', () => {
+      cursorDot.classList.remove('active');
+      isMoving = false;
+    });
+
+    // Animate cursor dot with smooth following
+    function animateCursor() {
+      if (isMoving) {
+        const speed = 0.15;
+        dotX += (mouseX - dotX) * speed;
+        dotY += (mouseY - dotY) * speed;
+        
+        cursorDot.style.left = `${dotX}px`;
+        cursorDot.style.top = `${dotY}px`;
+        
+        animationId = requestAnimationFrame(animateCursor);
+      } else {
+        animationId = null;
+      }
+    }
+
+    // Add hover effect for interactive elements
+    const interactiveElements = qsa('a, button, input, textarea, .card, .feature, .team-member');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursorDot.classList.add('hovering');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursorDot.classList.remove('hovering');
+      });
+    });
+  }
+
+  // Add stagger animation to grid items on load
+  const addStaggerAnimation = () => {
+    const grids = qsa('.grid-3, .grid-2, .team-grid');
+    grids.forEach(grid => {
+      const items = qsa('.card, .feature, .team-member', grid);
+      items.forEach((item, i) => {
+        if (!item.style.getPropertyValue('--d')) {
+          item.style.setProperty('--d', `${i * 80}ms`);
+        }
+      });
+    });
+  };
+
+  // Run after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addStaggerAnimation);
+  } else {
+    addStaggerAnimation();
+  }
 })();
