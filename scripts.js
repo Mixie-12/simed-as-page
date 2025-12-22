@@ -111,7 +111,7 @@
 
     // Hide cursor dot when mouse leaves window
     window.addEventListener('mouseout', (e) => {
-      if (!e.relatedTarget && !e.toElement) {
+      if (!e.relatedTarget) {
         cursorDot.classList.remove('active');
         isMoving = false;
       }
@@ -119,12 +119,14 @@
 
     // Animate cursor dot with smooth following
     function animateCursor() {
-      const speed = 0.15;
-      dotX += (mouseX - dotX) * speed;
-      dotY += (mouseY - dotY) * speed;
-      
-      cursorDot.style.left = `${dotX}px`;
-      cursorDot.style.top = `${dotY}px`;
+      if (isMoving) {
+        const speed = 0.15;
+        dotX += (mouseX - dotX) * speed;
+        dotY += (mouseY - dotY) * speed;
+        
+        cursorDot.style.left = `${dotX}px`;
+        cursorDot.style.top = `${dotY}px`;
+      }
       
       requestAnimationFrame(animateCursor);
     }
