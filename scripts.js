@@ -97,6 +97,7 @@
     let mouseX = 0, mouseY = 0;
     let dotX = 0, dotY = 0;
     let isMoving = false;
+    let animationId = null;
 
     // Track mouse movement
     document.addEventListener('mousemove', (e) => {
@@ -106,15 +107,16 @@
       if (!isMoving) {
         cursorDot.classList.add('active');
         isMoving = true;
+        if (!animationId) {
+          animateCursor();
+        }
       }
     });
 
     // Hide cursor dot when mouse leaves window
-    window.addEventListener('mouseout', (e) => {
-      if (!e.relatedTarget) {
-        cursorDot.classList.remove('active');
-        isMoving = false;
-      }
+    document.addEventListener('mouseleave', () => {
+      cursorDot.classList.remove('active');
+      isMoving = false;
     });
 
     // Animate cursor dot with smooth following
@@ -126,11 +128,12 @@
         
         cursorDot.style.left = `${dotX}px`;
         cursorDot.style.top = `${dotY}px`;
+        
+        animationId = requestAnimationFrame(animateCursor);
+      } else {
+        animationId = null;
       }
-      
-      requestAnimationFrame(animateCursor);
     }
-    animateCursor();
 
     // Add hover effect for interactive elements
     const interactiveElements = qsa('a, button, input, textarea, .card, .feature, .team-member');
