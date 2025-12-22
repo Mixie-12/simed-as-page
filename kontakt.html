@@ -59,7 +59,6 @@
           <h1>Kontakt</h1>
           <p class="lead">
             Ønsker du mer informasjon eller en uforpliktende samtale? Send oss en melding.
-            (Denne formen bruker <em>mailto</em> og åpner e‑postklienten din.)
           </p>
         </div>
       </div>
@@ -68,7 +67,7 @@
     <section class="section">
       <div class="container">
         <div class="contact">
-          <form class="form card reveal" id="contactForm" autocomplete="on">
+          <form class="form card reveal" id="contactForm" action="https://formspree.io/f/maqwprpl" method="POST" autocomplete="on">
             <div class="form__row">
               <label>
                 <span>Navn</span>
@@ -85,10 +84,15 @@
               <textarea name="message" rows="5" placeholder="Hva kan vi hjelpe deg med?" required></textarea>
             </label>
 
+            <!-- Honeypot field for bot/spam filtering -->
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
             <div class="form__actions">
               <button class="btn" type="submit">Send melding</button>
-              <p class="hint">Du kan også kontakte oss på <span class="mono">kontakt@simed.no</span> (endre til riktig e‑post).</p>
+              <p class="hint">Du kan også kontakte oss på <span class="mono">kontakt@simed.no</span>.</p>
             </div>
+
+            <div id="formStatus" class="form__status" style="display:none; margin-top: 1rem;"></div>
           </form>
 
           <aside class="card card--glass reveal" style="--d: 120ms">

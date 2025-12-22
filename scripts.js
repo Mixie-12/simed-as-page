@@ -72,23 +72,54 @@
     if (e.key === 'Escape') closeMenu();
   });
 
-  // Contact form (mailto)
+  // Contact form (Formspree)
   const form = qs('#contactForm');
-  form?.addEventListener('submit', (e) => {
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const data = new FormData(form);
-    const name = String(data.get('name') || '').trim();
-    const email = String(data.get('email') || '').trim();
-    const message = String(data.get('message') || '').trim();
+    const submitButton = qs('button[type="submit"]', form);
+    const statusDiv = qs('#formStatus');
+    
+    if (!submitButton || !statusDiv) return;
 
-    const to = 'kontakt@simed.no'; // TODO: set correct email
-    const subject = encodeURIComponent(`Henvendelse via nettside – ${name || 'Ukjent'}`);
-    const body = encodeURIComponent(
-      `Navn: ${name}\nE-post: ${email}\n\nMelding:\n${message}\n`
-    );
+    // Disable submit button and show loading state
+    const originalButtonText = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sender...';
+    statusDiv.style.display = 'none';
 
-    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    try {
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        // Success
+        statusDiv.textContent = 'Takk! Din melding er sendt.';
+        statusDiv.style.display = 'block';
+        statusDiv.style.color = '#10b981'; // green
+        form.reset();
+      } else {
+        // Error from server
+        statusDiv.textContent = 'Det oppstod en feil. Vennligst prøv igjen.';
+        statusDiv.style.display = 'block';
+        statusDiv.style.color = '#ef4444'; // red
+      }
+    } catch (error) {
+      // Network error or other error
+      statusDiv.textContent = 'Det oppstod en feil. Vennligst prøv igjen.';
+      statusDiv.style.display = 'block';
+      statusDiv.style.color = '#ef4444'; // red
+    } finally {
+      // Re-enable submit button
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
+    }
   });
 
   // Cursor follower dot
