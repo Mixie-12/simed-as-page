@@ -863,7 +863,6 @@ textarea{ resize: vertical; min-height: 120px; }
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(8px);
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -872,6 +871,13 @@ textarea{ resize: vertical; min-height: 120px; }
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+@supports (backdrop-filter: blur(8px)) {
+  .dev-notice-overlay {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+  }
 }
 
 .dev-notice-overlay.active {

@@ -200,7 +200,17 @@
 
   // Development Notice Modal
   const devNoticeOverlay = qs('#devNoticeOverlay');
+  const devNoticeBtn = qs('#devNoticeBtn');
   const DEV_NOTICE_KEY = 'simedDevNoticeAccepted';
+  
+  // Function to close the modal
+  const closeDevNotice = () => {
+    if (devNoticeOverlay) {
+      devNoticeOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+      sessionStorage.setItem(DEV_NOTICE_KEY, 'true');
+    }
+  };
   
   // Show modal on page load if user hasn't accepted it yet
   if (devNoticeOverlay) {
@@ -213,29 +223,23 @@
         document.body.style.overflow = 'hidden';
       }, 500);
     }
-  }
-
-  // Close modal function (will be called from inline onclick)
-  window.closeDevNotice = () => {
-    if (devNoticeOverlay) {
-      devNoticeOverlay.classList.remove('active');
-      document.body.style.overflow = '';
-      sessionStorage.setItem(DEV_NOTICE_KEY, 'true');
+    
+    // Add click listener to button
+    if (devNoticeBtn) {
+      devNoticeBtn.addEventListener('click', closeDevNotice);
     }
-  };
 
-  // Close on overlay click (not modal content)
-  if (devNoticeOverlay) {
+    // Close on overlay click (not modal content)
     devNoticeOverlay.addEventListener('click', (e) => {
       if (e.target === devNoticeOverlay) {
-        window.closeDevNotice();
+        closeDevNotice();
       }
     });
 
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && devNoticeOverlay.classList.contains('active')) {
-        window.closeDevNotice();
+        closeDevNotice();
       }
     });
   }
