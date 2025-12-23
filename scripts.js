@@ -191,11 +191,77 @@
     });
   };
 
+  // Animate stock chart value counter
+  const animateChartValue = () => {
+    const valueElement = qs('[data-chart-value]');
+    if (!valueElement) return;
+
+    const targetValue = 24.7; // Target percentage
+    const duration = 2500; // Animation duration in ms
+    const startTime = Date.now();
+    const startValue = 0;
+
+    const updateValue = () => {
+      const currentTime = Date.now();
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const currentValue = startValue + (targetValue - startValue) * easeOutQuart;
+      
+      valueElement.textContent = `+${currentValue.toFixed(1)}%`;
+      
+      if (progress < 1) {
+        requestAnimationFrame(updateValue);
+      }
+    };
+
+    // Start animation when chart becomes visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(updateValue, 800); // Delay to sync with line animation
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const stockChart = qs('.stock-chart');
+    if (stockChart) {
+      observer.observe(stockChart);
+    }
+  };
+
+  // Handle reduced motion for SVG animations
+  const handleReducedMotion = () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) {
+      // Remove all SVG animate and animateMotion elements
+      const svgAnimations = qsa('.stock-chart__canvas animate, .stock-chart__canvas animateMotion');
+      svgAnimations.forEach(anim => anim.remove());
+      
+      // Set counter to final value immediately
+      const valueElement = qs('[data-chart-value]');
+      if (valueElement) {
+        valueElement.textContent = '+24.7%';
+      }
+    }
+  };
+
+  // Initialize animations
+  const initAnimations = () => {
+    handleReducedMotion();
+    addStaggerAnimation();
+    animateChartValue();
+  };
+
   // Run after DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', addStaggerAnimation);
+    document.addEventListener('DOMContentLoaded', initAnimations);
   } else {
-    addStaggerAnimation();
+    initAnimations();
   }
 
   // Development Notice Modal

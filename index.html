@@ -104,6 +104,78 @@
               <p>En prosess som prioriterer kapitalbevaring, kvalitet og langsiktighet.</p>
             </div>
 
+            <!-- Animated Stock Growth Chart -->
+            <div class="stock-chart" aria-hidden="true">
+              <div class="stock-chart__header">
+                <div class="stock-chart__metric">
+                  <span class="stock-chart__label">Portefølje</span>
+                  <span class="stock-chart__value" data-chart-value>+0%</span>
+                </div>
+                <div class="stock-chart__period">
+                  <span class="stock-chart__trend">↗ Langsiktig vekst</span>
+                </div>
+              </div>
+              
+              <svg class="stock-chart__canvas" viewBox="0 0 400 180" preserveAspectRatio="xMidYMid meet">
+                <!-- Grid lines -->
+                <g class="stock-chart__grid" opacity="0.15">
+                  <line x1="0" y1="45" x2="400" y2="45" stroke="currentColor" stroke-width="1"/>
+                  <line x1="0" y1="90" x2="400" y2="90" stroke="currentColor" stroke-width="1"/>
+                  <line x1="0" y1="135" x2="400" y2="135" stroke="currentColor" stroke-width="1"/>
+                </g>
+                
+                <!-- Gradients and definitions -->
+                <defs>
+                  <linearGradient id="stockGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:rgba(110,231,255,0.25);stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:rgba(110,231,255,0.02);stop-opacity:1" />
+                  </linearGradient>
+                  <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:rgba(167,139,250,0.9);stop-opacity:1" />
+                    <stop offset="50%" style="stop-color:rgba(110,231,255,0.9);stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:rgba(110,231,255,1);stop-opacity:1" />
+                  </linearGradient>
+                  <path id="stockPath" d="M0,140 Q50,120 100,110 T200,80 T300,50 T400,30" fill="none"/>
+                </defs>
+                
+                <!-- Area under curve -->
+                <path class="stock-chart__area" d="M0,160 L0,140 Q50,120 100,110 T200,80 T300,50 T400,30 L400,160 Z" fill="url(#stockGradient)"/>
+                
+                <!-- Main line -->
+                <path class="stock-chart__line" d="M0,140 Q50,120 100,110 T200,80 T300,50 T400,30" fill="none" stroke="url(#lineGradient)" stroke-width="3" stroke-linecap="round"/>
+                
+                <!-- Animated dots along the line -->
+                <circle class="stock-chart__dot stock-chart__dot--1" cx="400" cy="30" r="4" fill="#6ee7ff" opacity="0.8">
+                  <animateMotion dur="8s" repeatCount="indefinite">
+                    <mpath href="#stockPath"/>
+                  </animateMotion>
+                </circle>
+                <circle class="stock-chart__dot stock-chart__dot--2" cx="400" cy="30" r="3" fill="#a78bfa" opacity="0.6">
+                  <animateMotion dur="8s" begin="2s" repeatCount="indefinite">
+                    <mpath href="#stockPath"/>
+                  </animateMotion>
+                </circle>
+                
+                <!-- Glow effect -->
+                <circle class="stock-chart__glow" cx="400" cy="30" r="8" fill="none" stroke="#6ee7ff" stroke-width="2" opacity="0.4">
+                  <animate attributeName="r" values="8;16;8" dur="2s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.4;0.1;0.4" dur="2s" repeatCount="indefinite"/>
+                </circle>
+              </svg>
+              
+              <!-- Mini bar chart indicators -->
+              <div class="stock-chart__bars">
+                <div class="stock-bar" style="--bar-height: 45%; --bar-delay: 0s"></div>
+                <div class="stock-bar" style="--bar-height: 55%; --bar-delay: 0.1s"></div>
+                <div class="stock-bar" style="--bar-height: 50%; --bar-delay: 0.2s"></div>
+                <div class="stock-bar" style="--bar-height: 68%; --bar-delay: 0.3s"></div>
+                <div class="stock-bar" style="--bar-height: 72%; --bar-delay: 0.4s"></div>
+                <div class="stock-bar" style="--bar-height: 65%; --bar-delay: 0.5s"></div>
+                <div class="stock-bar" style="--bar-height: 82%; --bar-delay: 0.6s"></div>
+                <div class="stock-bar" style="--bar-height: 90%; --bar-delay: 0.7s"></div>
+              </div>
+            </div>
+
             <ul class="checklist">
               <li>Primært børsnoterte aksjer – spesielt teknologi og strukturelle veksttrender</li>
               <li>Makro og likviditet – renter, pengepolitikk og markedsdynamikk</li>
