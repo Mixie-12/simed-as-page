@@ -233,8 +233,26 @@
     }
   };
 
+  // Handle reduced motion for SVG animations
+  const handleReducedMotion = () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) {
+      // Remove all SVG animate and animateMotion elements
+      const svgAnimations = qsa('.stock-chart__canvas animate, .stock-chart__canvas animateMotion');
+      svgAnimations.forEach(anim => anim.remove());
+      
+      // Set counter to final value immediately
+      const valueElement = qs('[data-chart-value]');
+      if (valueElement) {
+        valueElement.textContent = '+24.7%';
+      }
+    }
+  };
+
   // Initialize animations
   const initAnimations = () => {
+    handleReducedMotion();
     addStaggerAnimation();
     animateChartValue();
   };

@@ -1575,16 +1575,5 @@ textarea{ resize: vertical; min-height: 120px; }
   .stock-bar::after {
     animation: none;
   }
-  
-  /* Disable glow pulsing animation */
-  .stock-chart__glow {
-    r: 8;
-    opacity: 0.4;
-  }
-  
-  /* Hide motion path animation for dots - they remain visible at their initial position */
-  .stock-chart__dot animateMotion {
-    display: none;
-  }
 }
 
