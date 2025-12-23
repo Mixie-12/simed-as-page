@@ -88,15 +88,36 @@
           </div>
 
           <div class="card reveal" style="--d: 120ms">
-            <h3>Eiendomseksponering</h3>
-            <p class="muted">
-              Investeringer direkte i eiendom er per 2025 ikke en del av investeringsstrategien. Eksponering mot 
-              eiendomssektoren skjer gjennom eiendomsaksjer og eiendomsfond, slik som:
-            </p>
-            <ul class="checklist--compact">
-              <li>PLUS Fastigheter Sverige Index</li>
-              <li>Odin Eiendom D</li>
-            </ul>
+            <h3>Målfordeling</h3>
+            <div class="allocation-chart" aria-label="Porteføljefordeling">
+              <div class="allocation-segment" style="--percentage: 80%; --color: rgba(110,231,255,.35)">
+                <div class="allocation-bar"></div>
+                <div class="allocation-label">
+                  <span class="allocation-name">Aksjer</span>
+                  <span class="allocation-value">80%</span>
+                </div>
+              </div>
+              <div class="allocation-segment" style="--percentage: 20%; --color: rgba(167,139,250,.35)">
+                <div class="allocation-bar"></div>
+                <div class="allocation-label">
+                  <span class="allocation-name">Obligasjoner</span>
+                  <span class="allocation-value">20%</span>
+                </div>
+              </div>
+            </div>
+            <p class="hint" style="margin-top: 16px">Normal fordeling – kan tilpasses markedsforhold</p>
+          </div>
+        </div>
+
+        <div class="card reveal" style="margin-top: 26px">
+          <h3>Eiendomseksponering</h3>
+          <p class="muted">
+            Investeringer direkte i eiendom er per 2025 ikke en del av investeringsstrategien. Eksponering mot 
+            eiendomssektoren skjer gjennom eiendomsaksjer og eiendomsfond:
+          </p>
+          <div class="pill-row" style="margin-top: 14px">
+            <span class="pill">PLUS Fastigheter Sverige Index</span>
+            <span class="pill">Odin Eiendom D</span>
           </div>
         </div>
       </div>
@@ -112,31 +133,78 @@
           </p>
         </div>
 
+        <div class="card reveal" style="margin-top: 26px; max-width: 720px; margin-left: auto; margin-right: auto;">
+          <h3>Avkastningsmål</h3>
+          <div class="return-target">
+            <div class="return-range">
+              <div class="return-bar"></div>
+              <div class="return-markers">
+                <span class="return-marker" style="left: 0%">0%</span>
+                <span class="return-marker return-marker--min" style="left: 50%">10%</span>
+                <span class="return-marker return-marker--max" style="left: 100%">20%</span>
+              </div>
+            </div>
+            <p class="hint" style="margin-top: 12px; text-align: center">Årlig avkastningsmål (historisk avkastning er ingen garanti for fremtidig)</p>
+          </div>
+        </div>
+
         <div class="grid-2" style="margin-top: 26px">
           <article class="card reveal">
             <h3>Risikoprofil</h3>
-            <p class="muted">
+            <div class="risk-meter">
+              <div class="risk-scale">
+                <div class="risk-indicator" style="--position: 40%"></div>
+                <div class="risk-labels">
+                  <span>Lav</span>
+                  <span>Medium</span>
+                  <span>Høy</span>
+                </div>
+              </div>
+            </div>
+            <p class="muted" style="margin-top: 16px">
               Simed åpner opp for enkelte mindre høy-risiko investeringer, men samlet sett skal porteføljen være 
               lav til medium risiko. Posisjonene skal være godt diversifisert i ulike sektorer og geografiske markeder.
-            </p>
-            <p class="muted">
-              Beholdningen skal normalt bestå av <strong>10 til 50 posisjoner</strong>. Noe vekt vil også bli lagt 
-              på å diversifisere i forskjellige verdipapirer (hovedsakelig aksjer og obligasjoner), forskjellige 
-              valutaer og en blanding av small cap og large cap selskaper.
             </p>
           </article>
 
           <article class="card reveal" style="--d: 80ms">
-            <h3>Benchmark</h3>
-            <p class="muted">
-              Simed sikter på å slå et gjennomsnitt av:
+            <h3>Diversifisering</h3>
+            <div class="stat-grid">
+              <div class="stat-item">
+                <div class="stat-number">10-50</div>
+                <div class="stat-desc">Antall posisjoner</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">≤15%</div>
+                <div class="stat-desc">Max per posisjon</div>
+              </div>
+            </div>
+            <p class="muted" style="margin-top: 16px">
+              Diversifisering i forskjellige verdipapirer, valutaer, sektorer, geografiske markeder og en blanding 
+              av small cap og large cap selskaper.
             </p>
-            <ul class="checklist--compact">
-              <li>Nordnet Global Indeks</li>
-              <li>Nordnet Norge Indeks (OSEBX-en)</li>
-              <li>Nordnet Teknologi Indeks / Nordnet USA Indeks (S&P 500)</li>
-            </ul>
           </article>
+        </div>
+
+        <div class="card reveal" style="margin-top: 26px">
+          <h3>Benchmark</h3>
+          <p class="muted">
+            Simed sikter på å slå et gjennomsnitt av:
+          </p>
+          <div class="benchmark-list">
+            <div class="benchmark-item">
+              <span class="benchmark-icon">🌍</span>
+              <span class="benchmark-name">Nordnet Global Indeks</span>
+            </div>
+            <div class="benchmark-item">
+              <span class="benchmark-icon">🇳🇴</span>
+              <span class="benchmark-name">Nordnet Norge Indeks (OSEBX)</span>
+            </div>
+            <div class="benchmark-item">
+              <span class="benchmark-icon">🇺🇸</span>
+              <span class="benchmark-name">Nordnet Teknologi Indeks / USA Indeks (S&P 500)</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

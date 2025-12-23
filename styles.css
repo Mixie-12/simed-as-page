@@ -712,6 +712,318 @@ textarea{ resize: vertical; min-height: 120px; }
   }
 }
 
+/* Allocation Chart */
+.allocation-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.allocation-segment {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.allocation-bar {
+  width: var(--percentage);
+  height: 38px;
+  background: linear-gradient(135deg, var(--color), rgba(255,255,255,.06));
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  animation: fillBar 1.2s ease-out forwards;
+  transform-origin: left;
+}
+
+@keyframes fillBar {
+  from { 
+    width: 0%;
+    opacity: 0.5;
+  }
+  to { 
+    width: var(--percentage);
+    opacity: 1;
+  }
+}
+
+.allocation-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,.08), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.allocation-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.allocation-name {
+  font-size: 14px;
+  color: rgba(255,255,255,.86);
+  font-weight: 500;
+}
+
+.allocation-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(255,255,255,.95);
+  letter-spacing: -.02em;
+}
+
+/* Return Target Visualization */
+.return-target {
+  margin-top: 20px;
+}
+
+.return-range {
+  position: relative;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.return-bar {
+  width: 100%;
+  height: 32px;
+  background: linear-gradient(90deg, 
+    rgba(167,139,250,.15) 0%, 
+    rgba(110,231,255,.25) 50%, 
+    rgba(110,231,255,.35) 100%);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.return-bar::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: linear-gradient(90deg, rgba(110,231,255,.2), rgba(110,231,255,.35));
+  border-left: 2px solid rgba(110,231,255,.5);
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+.return-markers {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.return-marker {
+  font-size: 13px;
+  color: var(--muted2);
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.return-marker--min,
+.return-marker--max {
+  color: rgba(110,231,255,.95);
+  font-weight: 600;
+}
+
+/* Risk Meter */
+.risk-meter {
+  margin-top: 20px;
+}
+
+.risk-scale {
+  position: relative;
+  height: 50px;
+}
+
+.risk-scale::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 0;
+  right: 0;
+  height: 14px;
+  background: linear-gradient(90deg, 
+    rgba(110,231,255,.25) 0%, 
+    rgba(167,139,250,.25) 50%, 
+    rgba(239,68,68,.25) 100%);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 8px;
+}
+
+.risk-indicator {
+  position: absolute;
+  left: var(--position);
+  top: 10px;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, rgba(110,231,255,.5), rgba(167,139,250,.4));
+  border: 2px solid rgba(110,231,255,.8);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 20px rgba(110,231,255,.4), 0 4px 10px rgba(0,0,0,.3);
+  animation: indicatorPulse 2s ease-in-out infinite;
+}
+
+@keyframes indicatorPulse {
+  0%, 100% { 
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 0 20px rgba(110,231,255,.4), 0 4px 10px rgba(0,0,0,.3);
+  }
+  50% { 
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: 0 0 30px rgba(110,231,255,.6), 0 6px 15px rgba(0,0,0,.4);
+  }
+}
+
+.risk-labels {
+  position: absolute;
+  top: 38px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--muted2);
+}
+
+.risk-labels span:first-child {
+  text-align: left;
+}
+
+.risk-labels span:last-child {
+  text-align: right;
+}
+
+/* Stat Grid */
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 16px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 14px;
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+  letter-spacing: -.02em;
+}
+
+.stat-desc {
+  font-size: 13px;
+  color: var(--muted2);
+  margin-top: 6px;
+}
+
+/* Benchmark List */
+.benchmark-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.benchmark-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 12px;
+  transition: all .3s ease;
+}
+
+.benchmark-item:hover {
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.16);
+  transform: translateX(4px);
+}
+
+.benchmark-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.benchmark-name {
+  flex: 1;
+  color: rgba(255,255,255,.86);
+  font-size: 14px;
+}
+
+/* Sector Focus Cards */
+.sector-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.sector-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(110,231,255,.08), transparent 70%);
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+
+.sector-card:hover::before {
+  opacity: 1;
+}
+
+/* Enhanced responsive */
+@media (max-width: 640px) {
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .allocation-value {
+    font-size: 16px;
+  }
+  
+  .stat-number {
+    font-size: 28px;
+  }
+}
+
 /* Enhanced glass effects on hover */
 .card:hover, .feature:hover{
   background: rgba(255,255,255,.08);
