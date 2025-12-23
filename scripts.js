@@ -197,4 +197,50 @@
   } else {
     addStaggerAnimation();
   }
+
+  // Development Notice Modal
+  const devNoticeOverlay = qs('#devNoticeOverlay');
+  const devNoticeBtn = qs('#devNoticeBtn');
+  const DEV_NOTICE_KEY = 'simedDevNoticeAccepted';
+  
+  // Function to close the modal
+  const closeDevNotice = () => {
+    if (devNoticeOverlay) {
+      devNoticeOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+      sessionStorage.setItem(DEV_NOTICE_KEY, 'true');
+    }
+  };
+  
+  // Show modal on page load if user hasn't accepted it yet
+  if (devNoticeOverlay) {
+    const hasAccepted = sessionStorage.getItem(DEV_NOTICE_KEY);
+    
+    if (!hasAccepted) {
+      // Small delay for better UX
+      setTimeout(() => {
+        devNoticeOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }, 500);
+    }
+    
+    // Add click listener to button
+    if (devNoticeBtn) {
+      devNoticeBtn.addEventListener('click', closeDevNotice);
+    }
+
+    // Close on overlay click (not modal content)
+    devNoticeOverlay.addEventListener('click', (e) => {
+      if (e.target === devNoticeOverlay) {
+        closeDevNotice();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && devNoticeOverlay.classList.contains('active')) {
+        closeDevNotice();
+      }
+    });
+  }
 })();

@@ -46,6 +46,7 @@
           <a href="prosess.html">Prosess</a>
           <a href="risiko.html" class="active">Risikostyring</a>
           <a href="baerekraft.html">Bærekraft</a>
+          <a href="juridisk.html">Juridisk</a>
           <a class="btn btn--small" href="kontakt.html">Kontakt</a>
         </div>
       </nav>
@@ -189,6 +190,7 @@
         <a href="prosess.html">Prosess</a>
         <a href="risiko.html">Risikostyring</a>
         <a href="baerekraft.html">Bærekraft</a>
+        <a href="juridisk.html">Juridisk</a>
       </div>
     </div>
   </footer>
@@ -198,6 +200,56 @@
   </button>
 
   <div class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- Development Notice Modal -->
+  <div id="devNoticeOverlay" class="dev-notice-overlay" role="dialog" aria-modal="true" aria-labelledby="devNoticeTitle">
+    <div class="dev-notice-modal">
+      <div class="dev-notice-header">
+        <div class="dev-notice-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="dev-notice-title">
+          <h2 id="devNoticeTitle">Nettstedet er under utvikling</h2>
+          <span class="badge">
+            <span class="dot" aria-hidden="true"></span>
+            Ikke i bruk
+          </span>
+        </div>
+      </div>
+
+      <div class="dev-notice-content">
+        <p>
+          <strong>Viktig informasjon:</strong> Dette nettstedet er for øyeblikket under utvikling og er ikke i aktiv bruk. 
+          Informasjonen som presenteres her er kun til demonstrasjonsformål og skal ikke brukes som grunnlag for 
+          investeringsbeslutninger eller andre forretningsmessige avgjørelser.
+        </p>
+        <p>
+          Alle navn, personopplysninger og forretningsdetaljer som vises på dette nettstedet er plassholdere 
+          og representerer ikke reelle personer eller tjenester.
+        </p>
+      </div>
+
+      <div class="dev-notice-disclaimers">
+        <h3>Juridiske ansvarsfraskrivelser:</h3>
+        <ul>
+          <li><strong>Ingen investeringsrådgivning:</strong> Innholdet på dette nettstedet skal ikke tolkes som investeringsrådgivning eller finansiell rådgivning.</li>
+          <li><strong>Ingen garantier:</strong> Vi gir ingen garantier om nøyaktigheten eller fullstendigheten av informasjonen presentert her.</li>
+          <li><strong>Ikke et tilbud:</strong> Ingenting på dette nettstedet utgjør et tilbud om tjenester eller en oppfordring til å inngå avtaler.</li>
+          <li><strong>Risiko:</strong> All investering innebærer risiko, inkludert mulig tap av kapital. Konsulter kvalifiserte rådgivere før du tar investeringsbeslutninger.</li>
+          <li><strong>Regulatorisk status:</strong> Simed AS er ikke et regulert verdipapirforetak og tilbyr ikke tjenester til allmennheten.</li>
+        </ul>
+      </div>
+
+      <div class="dev-notice-footer">
+        <button class="btn" id="devNoticeBtn" aria-label="Lukk varsel">
+          Jeg forstår
+        </button>
+        <a href="juridisk.html" class="legal-link">Les fullstendig juridisk informasjon</a>
+      </div>
+    </div>
+  </div>
 
   <script src="scripts.js"></script>
 </body>
