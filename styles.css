@@ -1576,8 +1576,8 @@ textarea{ resize: vertical; min-height: 120px; }
     animation: none;
   }
   
-  .stock-chart__glow circle {
-    animation: none;
+  .stock-chart__glow animate {
+    display: none;
   }
   
   .stock-chart__dot {
