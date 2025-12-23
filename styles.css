@@ -1576,17 +1576,13 @@ textarea{ resize: vertical; min-height: 120px; }
     animation: none;
   }
   
-  /* Hide SVG animate elements for glow effect */
-  .stock-chart__glow > animate {
-    display: none;
+  /* Disable glow pulsing animation */
+  .stock-chart__glow {
+    r: 8;
+    opacity: 0.4;
   }
   
-  /* Keep dots visible but static - position them at the end of the line */
-  .stock-chart__dot {
-    cx: 400;
-    cy: 30;
-  }
-  
+  /* Hide motion path animation for dots - they remain visible at their initial position */
   .stock-chart__dot animateMotion {
     display: none;
   }

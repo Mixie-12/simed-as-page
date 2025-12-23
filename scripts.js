@@ -233,15 +233,17 @@
     }
   };
 
-  // Run after DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      addStaggerAnimation();
-      animateChartValue();
-    });
-  } else {
+  // Initialize animations
+  const initAnimations = () => {
     addStaggerAnimation();
     animateChartValue();
+  };
+
+  // Run after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAnimations);
+  } else {
+    initAnimations();
   }
 
   // Development Notice Modal
