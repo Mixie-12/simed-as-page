@@ -1580,7 +1580,7 @@ textarea{ resize: vertical; min-height: 120px; }
     animation: none;
   }
   
-  .stock-chart__dot animateMotion {
+  .stock-chart__dot {
     display: none;
   }
 }
