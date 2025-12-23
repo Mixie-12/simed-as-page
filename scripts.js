@@ -197,4 +197,46 @@
   } else {
     addStaggerAnimation();
   }
+
+  // Development Notice Modal
+  const devNoticeOverlay = qs('#devNoticeOverlay');
+  const DEV_NOTICE_KEY = 'simedDevNoticeAccepted';
+  
+  // Show modal on page load if user hasn't accepted it yet
+  if (devNoticeOverlay) {
+    const hasAccepted = sessionStorage.getItem(DEV_NOTICE_KEY);
+    
+    if (!hasAccepted) {
+      // Small delay for better UX
+      setTimeout(() => {
+        devNoticeOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }, 500);
+    }
+  }
+
+  // Close modal function (will be called from inline onclick)
+  window.closeDevNotice = () => {
+    if (devNoticeOverlay) {
+      devNoticeOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+      sessionStorage.setItem(DEV_NOTICE_KEY, 'true');
+    }
+  };
+
+  // Close on overlay click (not modal content)
+  if (devNoticeOverlay) {
+    devNoticeOverlay.addEventListener('click', (e) => {
+      if (e.target === devNoticeOverlay) {
+        window.closeDevNotice();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && devNoticeOverlay.classList.contains('active')) {
+        window.closeDevNotice();
+      }
+    });
+  }
 })();
