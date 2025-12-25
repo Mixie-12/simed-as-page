@@ -274,6 +274,105 @@
     handleReducedMotion();
     addStaggerAnimation();
     animateChartValue();
+    initKPIPanel();
+  };
+
+  // Initialize KPI Panel
+  const initKPIPanel = () => {
+    const kpiPanel = qs('#kpiPanel');
+    if (!kpiPanel || typeof kpiConfig === 'undefined') return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    kpiConfig.kpis.forEach((kpi, index) => {
+      const tile = document.createElement('div');
+      tile.className = 'kpi-tile';
+      if (!prefersReducedMotion) {
+        tile.style.setProperty('--d', `${index * 100}ms`);
+      }
+
+      // Generate sparkline path
+      const sparklineData = kpi.sparklineData || [];
+      const min = Math.min(...sparklineData);
+      const max = Math.max(...sparklineData);
+      const range = max - min || 1;
+      const width = 100;
+      const height = 30;
+
+      const pathPoints = sparklineData.map((value, i) => {
+        const x = (i / (sparklineData.length - 1)) * width;
+        const y = height - ((value - min) / range) * height;
+        return `${x},${y}`;
+      }).join(' L ');
+
+      const areaPoints = `0,${height} L ${pathPoints} L ${width},${height} Z`;
+
+      // Trend icon
+      const trendIcon = kpi.trend === 'up' ? '↗' : kpi.trend === 'down' ? '↘' : '→';
+
+      tile.innerHTML = `
+        <div class="kpi-tile__header">
+          <span class="kpi-tile__label">${kpi.label}</span>
+          <span class="kpi-tile__trend" aria-hidden="true">${trendIcon}</span>
+        </div>
+        <div class="kpi-tile__value" data-kpi-value="${kpi.value}">
+          ${kpi.value.toFixed(1).replace('.', ',')}${kpi.unit}
+        </div>
+        <div class="kpi-tile__description">${kpi.description}</div>
+        <div class="kpi-tile__sparkline">
+          <svg class="kpi-sparkline" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none">
+            <path class="kpi-sparkline__area" d="M ${areaPoints}" fill="currentColor" style="color: ${kpi.color}"/>
+            <path class="kpi-sparkline__path" d="M ${pathPoints}" style="color: ${kpi.color}"/>
+          </svg>
+        </div>
+      `;
+
+      kpiPanel.appendChild(tile);
+
+      // Animate counter
+      if (!prefersReducedMotion) {
+        const valueEl = tile.querySelector('[data-kpi-value]');
+        if (valueEl) {
+          const targetValue = kpi.value;
+          const duration = 1500;
+          const startTime = Date.now();
+          const startValue = 0;
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const updateValue = () => {
+                  const currentTime = Date.now();
+                  const elapsed = currentTime - startTime;
+                  const progress = Math.min(elapsed / duration, 1);
+                  const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                  const currentValue = startValue + (targetValue - startValue) * easeOutQuart;
+
+                  valueEl.textContent = `${currentValue.toFixed(1).replace('.', ',')}${kpi.unit}`;
+
+                  if (progress < 1) {
+                    requestAnimationFrame(updateValue);
+                  }
+                };
+
+                setTimeout(updateValue, (index * 100) + 300);
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.3 });
+
+          observer.observe(tile);
+        }
+      }
+    });
+
+    // Add tooltip handler
+    const tooltipBtn = qs('.kpi-disclaimer__tooltip');
+    if (tooltipBtn) {
+      tooltipBtn.addEventListener('click', () => {
+        alert(kpiConfig.disclaimer.methodology);
+      });
+    }
   };
 
   // Run after DOM is ready
