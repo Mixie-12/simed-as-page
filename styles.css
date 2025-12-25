@@ -217,31 +217,89 @@ a{ color:inherit; text-decoration:none; }
   letter-spacing:-.01em;
   transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
   cursor:pointer;
+  position: relative;
+  overflow: hidden;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.1), transparent);
+  transition: left .6s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
 .btn:hover{
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   border-color: rgba(255,255,255,.22);
   box-shadow: 0 20px 55px rgba(0,0,0,.35);
+  background: linear-gradient(135deg, rgba(110,231,255,.28), rgba(167,139,250,.22));
 }
-.btn:active{ transform: translateY(0px) scale(.99); }
-.btn--small{ padding: 10px 12px; border-radius: 12px; font-size: 14px; }
+
+.btn:active{ 
+  transform: translateY(0px) scale(.98); 
+}
+
+.btn:focus-visible {
+  outline-color: var(--accent);
+  box-shadow: var(--focus-ring);
+}
+
+.btn--small{ 
+  padding: 10px 12px; 
+  border-radius: 12px; 
+  font-size: 14px; 
+}
+
 .btn--ghost{
   background: rgba(255,255,255,.04);
   box-shadow:none;
 }
+
 .btn--ghost:hover{
-  background: rgba(255,255,255,.06);
+  background: rgba(255,255,255,.08);
   box-shadow: 0 18px 40px rgba(0,0,0,.20);
 }
 
 .inline{
   display:inline-flex;
-  gap:8px;
+  gap:6px;
   align-items:center;
   font-weight:600;
   color: rgba(255,255,255,.86);
+  transition: all .2s ease;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  border-radius: 6px;
+  padding: 4px 0;
 }
-.inline:hover{ text-decoration: underline; }
+
+.inline:hover{ 
+  color: var(--accent);
+}
+
+.inline:hover span {
+  transform: translateX(4px);
+}
+
+.inline span {
+  display: inline-block;
+  transition: transform .2s ease;
+}
+
+.inline:focus-visible {
+  outline-color: var(--accent);
+  box-shadow: var(--focus-ring);
+}
 
 /* Hero */
 .hero{
@@ -461,10 +519,46 @@ h1{
   background: rgba(255,255,255,.05);
   box-shadow: var(--shadow);
   padding: 18px;
+  transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,.20);
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+  box-shadow: 0 24px 70px rgba(0,0,0,.35), 0 0 40px rgba(110,231,255,.08);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
 .card--glass{
   background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
   border-color: rgba(255,255,255,.14);
+}
+
+.card--glass:hover {
+  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
 }
 .card__header h2{
   margin: 0 0 6px;
@@ -558,12 +652,58 @@ h1{
   background: rgba(255,255,255,.03);
   border-radius: var(--radius2);
   padding: 18px;
+  transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
-.feature h3{ margin: 12px 0 8px; letter-spacing:-.02em; }
-.feature p{ margin:0; color: var(--muted); line-height:1.7; }
+
+.feature::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.18);
+  box-shadow: 0 20px 50px rgba(0,0,0,.3), 0 0 30px rgba(110,231,255,.06);
+}
+
+.feature:hover::before {
+  opacity: 1;
+}
+
+.feature:hover .icon {
+  transform: scale(1.05);
+  background: rgba(255,255,255,.08);
+}
+
+.feature h3{ 
+  margin: 12px 0 8px; 
+  letter-spacing:-.02em; 
+}
+
+.feature p{ 
+  margin:0; 
+  color: var(--muted); 
+  line-height:1.7; 
+}
+
 .icon{
   width: 42px; height: 42px;
   display:grid; place-items:center;
+  border-radius: 16px;
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  transition: all .3s ease;
+}
   border-radius: 16px;
   background: rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.10);
@@ -1258,30 +1398,9 @@ textarea{ resize: vertical; min-height: 120px; }
   }
 }
 
-/* Enhanced glass effects on hover */
-.card:hover, .feature:hover{
-  background: rgba(255,255,255,.08);
-  border-color: rgba(255,255,255,.18);
-  transform: translateY(-2px);
-  box-shadow: 0 24px 70px rgba(0,0,0,.35), 0 0 40px rgba(110,231,255,.08);
-  transition: all .3s ease;
-}
+/* Enhanced nav hover effects - already defined above in nav section */
 
-.btn:hover{
-  background: linear-gradient(135deg, rgba(110,231,255,.28), rgba(167,139,250,.22));
-}
-
-.nav__menu a:hover{
-  background: rgba(255,255,255,.08);
-  box-shadow: 0 0 20px rgba(110,231,255,.1);
-}
-
-/* Active navigation state */
-.nav__menu a.active{
-  background: rgba(110,231,255,.12);
-  color: rgba(255,255,255,1);
-  border: 1px solid rgba(110,231,255,.3);
-}
+/* Active navigation state - already defined above in nav section */
 
 /* Page hero styles for individual pages */
 .page-hero{
