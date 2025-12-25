@@ -42,11 +42,13 @@
     if (!toggle || !menu) return;
     toggle.setAttribute('aria-expanded', 'false');
     menu.classList.remove('is-open');
+    document.body.classList.remove('menu-open');
   };
   const openMenu = () => {
     if (!toggle || !menu) return;
     toggle.setAttribute('aria-expanded', 'true');
     menu.classList.add('is-open');
+    document.body.classList.add('menu-open');
   };
 
   toggle?.addEventListener('click', () => {
@@ -67,10 +69,27 @@
     }
   });
 
-  // Close on Escape
+  // Close menu on Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeMenu();
   });
+
+  // Set active nav link based on current page
+  const setActiveNavLink = () => {
+    const currentPath = window.location.pathname;
+    const fileName = currentPath.split('/').pop() || 'index.html';
+    
+    qsa('.nav__menu a').forEach(link => {
+      const linkHref = link.getAttribute('href');
+      if (linkHref === fileName || (fileName === '' && linkHref === 'index.html')) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  };
+  
+  setActiveNavLink();
 
   // Contact form (Formspree)
   const form = qs('#contactForm');
