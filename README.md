@@ -6,11 +6,11 @@ Ingen byggesteg kreves.
 ## Struktur
 - `index.html` - Forside med hero-seksjon
 - `om.html` - Om selskapet
-- `team.html` - Team-side med medlemsprofiler
 - `mandat.html` - Investeringsmandat
 - `prosess.html` - Investeringsprosess
 - `risiko.html` - Risikostyring
 - `baerekraft.html` - Bærekraft og ansvarlighet
+- `juridisk.html` - Juridisk informasjon
 - `kontakt.html` - Kontaktskjema
 - `styles.css` - Styling med animasjoner og effekter
 - `scripts.js` - JavaScript for animasjoner og interaktivitet
@@ -33,7 +33,6 @@ Tips: For lokal utvikling kan du bruke en enkel server (for eksempel VS Code Liv
 ## Hva du bør endre
 - E‑post: `kontakt@simed.no` (i `kontakt.html` og `scripts.js`)
 - Organisasjonsnummer (i kontaktseksjonen)
-- Team-medlemmer med riktige navn og informasjon (i `team.html`)
 - Eventuelle lenker til personvern / vilkår hvis dere ønsker det
 
 ## Mer
